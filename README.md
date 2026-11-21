@@ -1,4 +1,7 @@
 # FishROS Learning Journey
+Learning is still going on...
+
+---
 
 A personal learning repository documenting my progress through FishROS and ROS 2, from basic C++ and Python nodes to robot simulation and navigation.
 
