@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find fishbot_description)/URDF/fishbot/common_inertia.urdf.xacro"/>
+
+    <xacro:macro name="castor_xacro" params="castor_name xyz">
+    <!-- castor of robot -->
+        <link name="${castor_name}_link">
+            <!-- appearance of link -->
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.016"/>
+                </geometry>
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <sphere radius="0.016"/>
+                </geometry>
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0.0 0.8"/>
+                </material>
+            </collision>
+            <xacro:sphere_inertia m="0.05" r="0.016"/>
+        </link>
+
+        <joint name="${castor_name}_joint" type="fixed">
+            <origin xyz="${xyz}" rpy="0.0 0.0 0.0"/>
+            <parent link="base_link"/>
+            <child link="${castor_name}_link"/>
+        </joint>
+
+        <gazebo reference="${castor_name}_link">
+            <mu1 value="0.0"/>
+            <mu2 value="0.0"/>
+            <kp value="1000000000.0"/>
+            <kd value="1.0"/>
+        </gazebo>
+    </xacro:macro>
+</robot>
